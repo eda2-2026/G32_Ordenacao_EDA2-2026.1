@@ -19,7 +19,7 @@ Para isso, utiliza-se a seguinte estratégia:
     2. Acessa a lista resultante do CSV pela tabela de índice.
     3. Inserir todas as questões da categoria até achar uma questão que não seja da categoria ou o EOF.
 
-Logo, utiliza-se a estratégia de **Busca Sequencial Indexada** para fazer um filtro mais veloz. -->
+Logo, utiliza-se a estratégia de **Busca Sequencial Indexada** para fazer um filtro mais veloz.
 
 Esperam-se uma quantidade considerável de categorias, logo, dentro da tabela de índices, utiliza-se a **Busca Sequencial com Sentinela com "Mover para Frente" invertido**. O "Mover Para Frente" invertido, nomeado por mim como "Mover Para Trás", é possível porque espera-se uma página por categoria, logo, após essa categoria ser acessada, as chances dela serem chamadas novamente são extremamente baixas. Dessa forma, podemos trocar uma categoria acessada com o último elemento. Mais uma adaptação em que se troca sempre pelo último que já não foi trocado, até chegar ao início da lista, onde volta para o final da lista. Exemplo
 
@@ -49,3 +49,4 @@ mkdocs serve
 |Autor|Matrícula|Github|
 |---|---|---|
 |Raphael Mendes da Silva|211039690|[Raphides](https://github.com/Raphides)|
+-->
