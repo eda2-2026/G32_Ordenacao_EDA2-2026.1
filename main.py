@@ -1,5 +1,7 @@
 import csv
 
+titulos_das_paginas = []
+
 # Read CSV
 move_to_back_i = 0
 qa_list = None
@@ -77,10 +79,26 @@ def qa_format(qa_selected):
     return "<br>".join([", ".join(i) for i in qa_selected])
 
 def on_post_page_macros(env):
-    #print(env.page.title)
-    qa_filtered = qa_filter(env.page.title)
-    env.markdown += qa_format(qa_filtered)
+    if env.page.title == "Simulado":
+        ...
+    else:
+        titulos_das_paginas.append(env.page.title)
+        qa_filtered = qa_filter(env.page.title)
+        env.markdown += qa_format(qa_filtered)
 
+
+def define_env(env):
+    #env.variables["titulos_das_paginas"] = titulos_das_paginas
+
+    @env.macro
+    def create_mock_test_menu():
+        titulos_das_paginas_html = "<form>"
+        for titulo in titulos_das_paginas:
+            titulos_das_paginas_html += f'<input type="radio" id="{titulo}" name="priorized_category" value="{titulo}">\n<label for="{titulo}">{titulo}</label><br>'
+        titulos_das_paginas_html += "</form>"
+        print(titulos_das_paginas_html)
+        return titulos_das_paginas_html
+    
 
 # Scrapped Idea
 # def define_env(env):

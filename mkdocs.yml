@@ -3,6 +3,5 @@ site_name: My Docs
 plugins:
 - macros
 
-#extra_javascript:
-# - papaparse.min.js
-# - qa.js
+extra_javascript:
+ - js/mock_test.js
