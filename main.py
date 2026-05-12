@@ -9,6 +9,40 @@ with open("./qa.csv", "rt") as qa_csv:
     qa_list = list(csv.reader(qa_csv, dialect="excel"))
     #print("csv carregado")
 
+# Counting Sort with int
+def counting_sort(original_list, column_index: int):
+    unordered_column = [int(original_record[column_index]) for original_record in original_list]
+    start_offset = min(unordered_column)
+    histogram_length = (max(unordered_column) - start_offset) + 1
+    histogram = [0] * histogram_length
+
+    def get_index_from(value):
+        if (value >= start_offset) and (value < (start_offset + histogram_length)):
+            return value - start_offset
+        else:
+            raise IndexError
+    
+    for unordered_element in unordered_column:
+        histogram[get_index_from(unordered_element)] += 1
+    last_index_list = histogram
+    last_index = -1
+    for hi in range(len(histogram)):
+        last_index += last_index_list[hi]
+        last_index_list[hi] = last_index
+
+    ordered_list = [0] * len(original_list)
+
+    for original_list_index in range(len(original_list))[::-1]:
+        ordered_list[last_index_list[get_index_from(unordered_column[original_list_index])]] = original_list[original_list_index]
+        last_index_list[get_index_from(unordered_column[original_list_index])] -= 1
+    
+    return ordered_list
+
+#print(counting_sort(qa_list[1:], 0))
+
+qa_list = [qa_list[0]] + counting_sort(qa_list[1:], 3)
+print(qa_list)
+
 # Building index table 
 qa_categories = set()
 qa_categories.add(qa_list[1][0])

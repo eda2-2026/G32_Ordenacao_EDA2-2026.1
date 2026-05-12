@@ -1,10 +1,10 @@
 Categoria,Banca,Órgão,Ano,Questão,Resposta,Justificativa
+Oauth2,Cebraspe,MPO,2024,É recomendado aos clientes que implementam OAuth 2.0 usar o tipo de resposta do código de autorização em vez dos tipos de resposta que causam a emissão do token de acesso no terminal de autorização.,C,Ainda a Completar
 Oauth2,Cebraspe,BDMG,2025,OAuth2 é um protocolo de autorização.,C,Ainda a Completar
 Oauth2,Cebraspe,TRF,2025,"Conforme o OAuth 2.0, o single sign-on é possível mediante a implementação de sessões, entretanto o single logout deve ser realizado individualmente.",E,Ainda a Completar
 Oauth2,Cebraspe,TRF,2025,"Segundo o OAuth 2.0, o SSO (single sign-on) ocorre quando um usuário, ao fazer login em um aplicativo, automaticamente faz login em outros aplicativos.",C,Ainda a Completar
 Oauth2,Cebraspe,TRF,2025,"De acordo com a especificação OAuth 2.0, o token de acesso, credencial utilizada para acessar recursos protegidos, é uma string que representa uma autorização emitida para o cliente",C,Ainda a Completar
 Oauth2,Cebraspe,TRF,2025,"A estrutura de autorização do OAuth 2.0 permite que uma aplicação obtenha acesso ilimitado a um serviço HTTP se houver token válido, mas não permite que uma aplicação de terceiros obtenha acesso por conta própria.",E,Ainda a Completar
 Oauth2,Cebraspe,BDMG,2025,"No OAuth 2, por padrão, os tokens de acesso devem ser do tipo JWT.",E,Ainda a Completar
-Oauth2,Cebraspe,MPO,2024,É recomendado aos clientes que implementam OAuth 2.0 usar o tipo de resposta do código de autorização em vez dos tipos de resposta que causam a emissão do token de acesso no terminal de autorização.,C,Ainda a Completar
 Arquitetura de Inteligência de Negócio,Cebraspe,FUB,2025,"Um data warehouse é um repositório de dados integrados de múltiplas fontes, processados para armazenamento em um modelo multidimensional.",C,Ainda a Completar
 Aprendizado de Máquina,Cebraspe,ANM,2025,"O aprendizado supervisionado analisa dados sem respostas pré definidas, identificando padrões ou categorias de forma autônoma, sem orientações específicas.",E,Ainda a Completar
