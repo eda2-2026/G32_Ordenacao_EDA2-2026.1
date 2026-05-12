@@ -1,6 +1,6 @@
 # Trabalho 2 de EDA 2 - Ordenação
 
-[Vídeo explicando sobre o trabalho](https://youtu.be/9PWBgqjrUE0)
+[Vídeo explicando sobre o trabalho](https://youtu.be/--cAIG70X8Q)
 
 O trabalho 2 é uma continuação direta do trabalho 1 realizado em EDA 2 sobre Busca. No trabalho 1, era garantido que as questões estariam agrupadas por categoria no CSV. No trabalho 2, não há mais essa garantia: o CSV pode estar desorganizado por padrão. O desafio foi utilizar algorítimos de ordenação eficientes que ordenassem as questões em uma ordem que pudesse ser utilizada pelos algorítmos de busca implementados anteriormente.
 
