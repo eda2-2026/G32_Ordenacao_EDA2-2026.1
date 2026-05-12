@@ -9,8 +9,10 @@ with open("./qa.csv", "rt") as qa_csv:
     qa_list = list(csv.reader(qa_csv, dialect="excel"))
     #print("csv carregado")
 
+
+
 # Counting Sort with int
-def counting_sort(original_list, column_index: int):
+def counting_sort(original_list, column_index: int, ascendente=True):
     unordered_column = [int(original_record[column_index]) for original_record in original_list]
     start_offset = min(unordered_column)
     histogram_length = (max(unordered_column) - start_offset) + 1
@@ -26,7 +28,7 @@ def counting_sort(original_list, column_index: int):
         histogram[get_index_from(unordered_element)] += 1
     last_index_list = histogram
     last_index = -1
-    for hi in range(len(histogram)):
+    for hi in range(len(histogram))[::(-1 + ascendente*2)]:
         last_index += last_index_list[hi]
         last_index_list[hi] = last_index
 
@@ -40,7 +42,7 @@ def counting_sort(original_list, column_index: int):
 
 #print(counting_sort(qa_list[1:], 0))
 
-qa_list = [qa_list[0]] + counting_sort(qa_list[1:], 3)
+qa_list = [qa_list[0]] + counting_sort(qa_list[1:], 3, ascendente=False)
 print(qa_list)
 
 # Building index table 
