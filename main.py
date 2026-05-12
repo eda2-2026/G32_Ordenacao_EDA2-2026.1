@@ -1,7 +1,7 @@
 import csv
 from typing import Literal
 
-titulos_das_paginas = []
+page_titles = []
 
 # Read CSV
 move_to_back_i = 0
@@ -61,7 +61,7 @@ qa_csv_header = qa_list[0]
 qa_list = counting_sort(qa_list[1:], 3, asc=False)
 qa_list = radix_sort_lsd(qa_list,0)
 qa_list.insert(0, qa_csv_header)
-print(qa_list)
+#print(qa_list)
 
 # Building index table 
 qa_categories = set()
@@ -136,7 +136,7 @@ def on_post_page_macros(env):
     if env.page.title in ["Simulado", "Estudo para concursos via MkDocs"]:
         ...
     else:
-        titulos_das_paginas.append(env.page.title)
+        page_titles.append(env.page.title)
         qa_filtered = qa_filter(env.page.title)
         env.markdown += qa_format(qa_filtered)
 
@@ -146,12 +146,12 @@ def define_env(env):
 
     @env.macro
     def create_mock_test_menu():
-        titulos_das_paginas_html = '<form id="mock_test_menu">'
-        for titulo in titulos_das_paginas:
-            titulos_das_paginas_html += f'<input type="checkbox" id="{titulo}" name="priorized_category" value="{titulo}"> <label for="{titulo}">{titulo}</label><br>'
-        titulos_das_paginas_html += '<input type="submit" value="Criar Simulado"></form>'
-        print(titulos_das_paginas_html)
-        return titulos_das_paginas_html
+        page_titles_html = '<form id="mock_test_menu">'
+        for titulo in page_titles:
+            page_titles_html += f'<input type="checkbox" id="{titulo}" name="priorized_category" value="{titulo}"> <label for="{titulo}">{titulo}</label><br>'
+        page_titles_html += '<input type="submit" value="Criar Simulado"></form>'
+        #print(titulos_das_paginas_html)
+        return page_titles_html
     
 
 # Scrapped Idea
