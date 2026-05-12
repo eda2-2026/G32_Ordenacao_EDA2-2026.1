@@ -11,6 +11,7 @@ with open("./qa.csv", "rt") as qa_csv:
     #print("csv carregado")
 
 
+# Radix Sort - Least Signficant Digit
 def radix_sort_lsd(original_list, column_index, asc=True):
     max_fill = max([len(original_record[column_index]) for original_record in original_list])
     for original_list_i in original_list:
@@ -132,7 +133,7 @@ def qa_format(qa_selected):
     return "<br>".join([", ".join(i) for i in qa_selected])
 
 def on_post_page_macros(env):
-    if env.page.title == "Simulado":
+    if env.page.title in ["Simulado", "Estudo para concursos via MkDocs"]:
         ...
     else:
         titulos_das_paginas.append(env.page.title)
@@ -145,10 +146,10 @@ def define_env(env):
 
     @env.macro
     def create_mock_test_menu():
-        titulos_das_paginas_html = "<form>"
+        titulos_das_paginas_html = '<form id="mock_test_menu">'
         for titulo in titulos_das_paginas:
-            titulos_das_paginas_html += f'<input type="radio" id="{titulo}" name="priorized_category" value="{titulo}">\n<label for="{titulo}">{titulo}</label><br>'
-        titulos_das_paginas_html += "</form>"
+            titulos_das_paginas_html += f'<input type="checkbox" id="{titulo}" name="priorized_category" value="{titulo}"> <label for="{titulo}">{titulo}</label><br>'
+        titulos_das_paginas_html += '<input type="submit" value="Criar Simulado"></form>'
         print(titulos_das_paginas_html)
         return titulos_das_paginas_html
     
