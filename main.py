@@ -1,4 +1,5 @@
 import csv
+from typing import Literal
 
 titulos_das_paginas = []
 
@@ -10,10 +11,16 @@ with open("./qa.csv", "rt") as qa_csv:
     #print("csv carregado")
 
 
+def radix_sort(original_list, column_index, ascendente=True):
+    ...
+
 
 # Counting Sort with int
-def counting_sort(original_list, column_index: int, ascendente=True):
-    unordered_column = [int(original_record[column_index]) for original_record in original_list]
+def counting_sort(original_list, column_index: int, ascendente=True, data_type: Literal["int", "str"]="int", string_i=0):
+    if data_type == "int":
+        unordered_column = [int(original_record[column_index]) for original_record in original_list]
+    elif data_type == "str":
+        unordered_column = [ord(original_record[column_index][string_i]) for original_record in original_list]
     start_offset = min(unordered_column)
     histogram_length = (max(unordered_column) - start_offset) + 1
     histogram = [0] * histogram_length
