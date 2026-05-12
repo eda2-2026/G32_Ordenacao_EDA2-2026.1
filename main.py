@@ -11,12 +11,19 @@ with open("./qa.csv", "rt") as qa_csv:
     #print("csv carregado")
 
 
-def radix_sort(original_list, column_index, ascendente=True):
-    ...
-
+def radix_sort_lsd(original_list, column_index, asc=True):
+    max_fill = max([len(original_record[column_index]) for original_record in original_list])
+    for original_list_i in original_list:
+        original_list_i[column_index] = original_list_i[column_index].ljust(max_fill, '\0')
+    ordered_list_by_str = original_list
+    for char_i in range(max_fill)[::-1]:
+        ordered_list_by_str = counting_sort(ordered_list_by_str, column_index,asc=asc, data_type="str",string_i=char_i)
+    for ordered_record in ordered_list_by_str:
+        ordered_record[column_index] = ordered_record[column_index].strip("\0")
+    return ordered_list_by_str
 
 # Counting Sort with int
-def counting_sort(original_list, column_index: int, ascendente=True, data_type: Literal["int", "str"]="int", string_i=0):
+def counting_sort(original_list, column_index: int, asc=True, data_type: Literal["int", "str"]="int", string_i=0):
     if data_type == "int":
         unordered_column = [int(original_record[column_index]) for original_record in original_list]
     elif data_type == "str":
@@ -35,7 +42,7 @@ def counting_sort(original_list, column_index: int, ascendente=True, data_type: 
         histogram[get_index_from(unordered_element)] += 1
     last_index_list = histogram
     last_index = -1
-    for hi in range(len(histogram))[::(-1 + ascendente*2)]:
+    for hi in range(len(histogram))[::(-1 + asc*2)]:
         last_index += last_index_list[hi]
         last_index_list[hi] = last_index
 
@@ -49,7 +56,10 @@ def counting_sort(original_list, column_index: int, ascendente=True, data_type: 
 
 #print(counting_sort(qa_list[1:], 0))
 
-qa_list = [qa_list[0]] + counting_sort(qa_list[1:], 3, ascendente=False)
+qa_csv_header = qa_list[0]
+qa_list = counting_sort(qa_list[1:], 3, asc=False)
+qa_list = radix_sort_lsd(qa_list,0)
+qa_list.insert(0, qa_csv_header)
 print(qa_list)
 
 # Building index table 
